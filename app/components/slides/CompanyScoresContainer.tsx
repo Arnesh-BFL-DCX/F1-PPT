@@ -169,7 +169,11 @@ export function CompanyScoresContainer() {
 
         {/* Left divider */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/bottom-line-left.svg" alt="" style={{ height: '100%', flexShrink: 0 }} />
+        <img
+          src="/bottom-line-left.svg"
+          alt=""
+          style={{ width: '59.492px', height: '1.736px', flexShrink: 0, alignSelf: 'center' }}
+        />
 
         {/* Left company info */}
         <div className="flex flex-col leading-none" style={{ flexShrink: 0 }}>
@@ -300,7 +304,7 @@ export function CompanyScoresContainer() {
           </span>
           <div className="flex items-center gap-[4px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/bajaj-logo-container.svg" alt="" style={{ height: '16px' }} />
+            <img src="/bajaj-logo-container.svg" alt="" style={{ width: '16px', height: '16px' }} />
             <span
               style={{
                 fontFamily: 'var(--font-formula1)',
@@ -316,7 +320,11 @@ export function CompanyScoresContainer() {
 
         {/* Right divider */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/bottom-line-right.svg" alt="" style={{ height: '100%', flexShrink: 0 }} />
+        <img
+          src="/bottom-line-right.svg"
+          alt=""
+          style={{ width: '58.624px', height: '1.736px', flexShrink: 0, alignSelf: 'center' }}
+        />
 
         {/* Trailing "4" */}
         <span

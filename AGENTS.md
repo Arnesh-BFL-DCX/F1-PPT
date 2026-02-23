@@ -37,3 +37,6 @@ Never hardcode values — always use `@theme` tokens from `globals.css`.
 3. Map all values to existing tokens. Add new tokens to `@theme` if needed.
 
 dev server running on port 3001
+
+## Screenshot output
+- Save all Playwright screenshots to `/Users/macbook/Documents/Projects/F1-PPT/screenshots`.
