@@ -12,3 +12,38 @@ agendaCard:
   modules:
     completed: 52
     total: 54
+
+keyPriorities:
+  items:
+    - label: "B Social"
+      detail: "launching Apr 15"
+    - label: "YouTube"
+      detail: "36.5K videos"
+    - label: "Live commerce"
+      detail: "sessions: 50 → 3000"
+    - label: "Instagram & FB"
+      detail: "6 branded channels"
+
+output:
+  metrics:
+    - value: "1.3B"
+      sub: "views"
+      description: "2nd largest discovery engine"
+    - value: "10M"
+      description: "Largest community in BFSI"
+    - value: "10M"
+      description: "Live commerce as an engagement driver"
+    - value: "500"
+      sub: "Cr"
+      description: "Business"
+
+growth:
+  metrics:
+    - label: "Views 1.3B"
+      color: green
+    - label: "Community 10M"
+      color: gold
+    - label: "Live sessions 3K"
+      color: blue
+    - label: "Revenue 500 Cr"
+      color: red

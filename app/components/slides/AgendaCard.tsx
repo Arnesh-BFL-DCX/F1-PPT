@@ -20,46 +20,48 @@ interface AgendaCardProps {
 
 export function AgendaCard({ data }: AgendaCardProps) {
   return (
-    <Card className="w-[450px] h-[502px] relative flex flex-col" style={{ padding: 'var(--card-padding)' }}>
-      {/* Heading + divider + items */}
-      <div className="flex flex-col gap-[16px]">
-        <div className="flex flex-col gap-[14px]">
+    <Card className="w-[450px] h-[502px] relative flex flex-col p-[32px] gap-[16px]">
+      {/* Heading + divider */}
+      <div className="flex flex-col gap-[14px] shrink-0">
+        <p
+          className="m-0 w-full"
+          style={{
+            fontFamily: 'var(--font-rubik)',
+            fontWeight: 300,
+            fontSize: '24px',
+            color: 'var(--color-text-primary)',
+            lineHeight: 1.3,
+            letterSpacing: '-0.16px',
+          }}
+        >
+          {data.heading}
+        </p>
+        {/* Line: h-0 container, image absolutely inset -1.5px from top */}
+        <div className="h-0 relative shrink-0 w-full">
+          <div className="absolute inset-[-1.5px_0_0_0]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img alt="" className="block max-w-none size-full" src="/card-section-line.svg" />
+          </div>
+        </div>
+      </div>
+
+      {/* Agenda items */}
+      <div className="flex flex-col gap-[8px] shrink-0">
+        {data.items.map((item, i) => (
           <p
-            className="m-0"
+            key={i}
+            className="m-0 uppercase"
             style={{
               fontFamily: 'var(--font-rubik)',
-              fontWeight: 300,
-              fontSize: '24px',
-              color: 'var(--color-text-primary)',
-              lineHeight: 1.3,
-              letterSpacing: '-0.16px',
+              fontWeight: i === 0 ? 400 : 300,
+              fontSize: '20px',
+              lineHeight: 1.5,
+              color: colorMap[item.color],
             }}
           >
-            {data.heading}
+            {item.text}
           </p>
-          <div
-            className="w-full"
-            style={{ height: '1.5px', background: 'var(--gradient-divider)' }}
-          />
-        </div>
-
-        <div className="flex flex-col gap-[8px]">
-          {data.items.map((item, i) => (
-            <p
-              key={i}
-              className="m-0 uppercase"
-              style={{
-                fontFamily: 'var(--font-rubik)',
-                fontWeight: i === 0 ? 400 : 300,
-                fontSize: '20px',
-                lineHeight: 1.5,
-                color: colorMap[item.color],
-              }}
-            >
-              {item.text}
-            </p>
-          ))}
-        </div>
+        ))}
       </div>
 
       {/* Modules + track — absolutely positioned at bottom center */}
