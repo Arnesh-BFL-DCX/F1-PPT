@@ -1,81 +1,125 @@
 @import "tailwindcss";
 
+/* ─── Fonts ──────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Formula1';
+  src: url('/fonts/formula1-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Formula1';
+  src: url('/fonts/formula1-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Formula1';
+  src: url('/fonts/formula1-wide.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Michroma';
+  src: url('/fonts/michroma.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('/fonts/rubik.ttf') format('truetype');
+  font-weight: 300 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('/fonts/rubik-italic.ttf') format('truetype');
+  font-weight: 300 900;
+  font-style: italic;
+}
+
+/* ─── Theme tokens ───────────────────────────────────────────────────────── */
+
 @theme {
-  /* Custom slide theme tokens */
-  --color-slide-bg: #0f172a;
-  --color-slide-text: #f1f5f9;
-  --color-slide-accent: #3b82f6;
-  --color-slide-muted: #64748b;
+  /* Fonts */
+  --font-formula1: 'Formula1', sans-serif;
+  --font-michroma: 'Michroma', sans-serif;
+  --font-rubik:    'Rubik', sans-serif;
 
-  /* Slide spacing */
+  /* Slide canvas — 16:9 at 1920×1080 */
+  --slide-width:       1920px;
+  --slide-height:      1080px;
+  --slide-grid-width:  1984.774px;
+  --slide-grid-height: 1104.902px;
+
+  /* Background gradient stops */
+  --color-slide-gradient-edge: rgb(36, 46, 66);
+  --color-slide-gradient-mid:  rgb(15, 19, 47);
+  --color-slide-gradient-core: rgb(8, 8, 16);
+
+  /* Text */
+  --color-text-primary:   #ffffff;
+  --color-text-secondary: #ececec;
+  --color-text-muted:     #727478;
+
+  /* Accents */
+  --color-accent-green:  #5de868;
+  --color-accent-gold:   #e2c164;
+  --color-accent-blue:   #5ea8ed;
+  --color-accent-red:    #d53a39;
+  --color-accent-orange: #ff9e1b;
+
+  /* Data / chart */
+  --color-chart-blue:  #0496ff;
+  --color-chart-cyan:  #28b5e0;
+  --color-chart-green: #7ed321;
+  --color-chart-red:   #ed5e5e;
+  --color-chart-steel: #4374b7;
+
+  /* Gradients */
+  --gradient-metric-blue: linear-gradient(to bottom, #28b5e0, #0496ff);
+  --gradient-progress:    linear-gradient(90deg, #174dd3 0%, #9026b4 35.1%, #e63364 62.5%, #ef9f3e 100%);
+  --gradient-divider:     linear-gradient(-0.216deg, rgba(139,139,139,0.1) 23.9%, #353535 89.5%);
+
+  /* Typography scale */
+  --font-size-h1: 32px;
+
+  /* Card */
+  --card-radius: 20px;
+  --card-bg:     linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0));
+  --card-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25), 0px 0px 8.4px 0px rgba(233,223,255,0.3);
+
+  /* Table card */
+  --table-card-radius:  32px;
+  --table-card-padding: 32px;
+  --table-card-border-gradient: linear-gradient(
+    to bottom,
+    rgba(29, 131, 246, 0.2)  20%,
+    rgba(29, 131, 246, 1.0)  50%,
+    rgba(29, 131, 246, 0.2)  80%
+  );
+
+  /* Slide defaults */
+  --color-slide-text:      #f1f5f9;
   --spacing-slide-padding: 4rem;
-
-  /* Typography scales for slides */
-  --font-size-slide-title: 4rem;
-  --font-size-slide-heading: 3rem;
-  --font-size-slide-subheading: 2rem;
-  --font-size-slide-body: 1.5rem;
 }
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
+  body { margin: 0; padding: 0; }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-}
+/* ─── Slide ──────────────────────────────────────────────────────────────── */
 
-/* Slide-specific styles */
 .slide {
+  position: relative;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -83,56 +127,61 @@
   justify-content: center;
   align-items: center;
   padding: var(--spacing-slide-padding);
-  background: var(--color-slide-bg);
   color: var(--color-slide-text);
+  overflow: hidden;
+  background-image: linear-gradient(
+    131.059deg,
+    var(--color-slide-gradient-edge)  0%,
+    var(--color-slide-gradient-mid)   28%,
+    var(--color-slide-gradient-core)  50%,
+    var(--color-slide-gradient-mid)   70%,
+    var(--color-slide-gradient-edge)  100%
+  );
 }
+
+/* Content sits above SlideBackground layers (z 1 + 2) */
+.slide-content {
+  position: relative;
+  z-index: 3;
+}
+
+/* ─── Card ───────────────────────────────────────────────────────────────── */
+
+.card {
+  border-radius: var(--card-radius);
+  background-image: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}
+
+/* ─── Table card ─────────────────────────────────────────────────────────── */
+
+.table-card {
+  position: relative;
+  border-radius: var(--table-card-radius);
+  padding: var(--table-card-padding);
+  overflow: clip;
+}
+
+/* Gradient border — uses mask to cut out the interior, leaving a 1.5px border strip */
+.table-card-border-gradient {
+  position: absolute;
+  inset: 0 0 0.45px 0;
+  border-radius: var(--table-card-radius);
+  padding: 1.5px;
+  background: var(--table-card-border-gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
 
 .slide h1 {
-  font-size: var(--font-size-slide-title);
-  font-weight: 700;
-  margin-bottom: 2rem;
-}
-
-.slide h2 {
-  font-size: var(--font-size-slide-heading);
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-}
-
-.slide h3 {
-  font-size: var(--font-size-slide-subheading);
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.slide p {
-  font-size: var(--font-size-slide-body);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.slide ul, .slide ol {
-  font-size: var(--font-size-slide-body);
-  line-height: 1.8;
-  margin-left: 2rem;
-}
-
-.slide code {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-family: 'Fira Code', monospace;
-}
-
-.slide pre {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  margin: 1rem 0;
-}
-
-.slide pre code {
-  background: none;
-  padding: 0;
+  font-family: var(--font-michroma);
+  font-size: var(--font-size-h1);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: normal;
+  margin: 0;
 }
