@@ -1,1 +1,14 @@
 title: SOCAL PLATFORMS
+
+agendaCard:
+  heading: "FY27 SOCIAL PLATFORMS — AGENDA"
+  items:
+    - text: "A. OUR LONG-RANGE STRATEGY — 1 min"
+      color: green
+    - text: "B. FY26 REPORT CARD — 2 min"
+      color: gold
+    - text: "C. FY27 AOP — 27 min"
+      color: blue
+  modules:
+    completed: 52
+    total: 54

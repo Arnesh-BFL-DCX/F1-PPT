@@ -22,6 +22,7 @@ interface Particle {
   size: number;
   delay: number;
   speedFactor: number;
+  phase: number;
 }
 
 interface ParticleImageMorphProps {
@@ -138,7 +139,8 @@ export function ParticleImageMorph({
         targetColor: p.color,
         size: Math.random() < 0.15 ? 3.5 : 2.5,
         delay: 0,
-        speedFactor: 0.8 + Math.random() * 0.4
+        speedFactor: 0.8 + Math.random() * 0.4,
+        phase: Math.random() * Math.PI * 2,
       }));
 
       setImagesLoaded(true);
@@ -175,7 +177,8 @@ export function ParticleImageMorph({
           targetColor: 'rgba(0,0,0,0)',
           size: Math.random() < 0.15 ? 3.5 : 2.5,
           delay: 0,
-          speedFactor: 0.8 + Math.random() * 0.4
+          speedFactor: 0.8 + Math.random() * 0.4,
+          phase: Math.random() * Math.PI * 2,
         });
       }
     }
@@ -271,14 +274,29 @@ export function ParticleImageMorph({
            noiseX = (Math.random() - 0.5) * 0.5;
            noiseY = (Math.random() - 0.5) * 0.5;
         } else {
-           // Blob: Floating Water
+           // Blob: Organic idle — four independent wave layers
            const t = timeRef.current;
-           const wave1X = Math.sin(p.baseY * 0.005 + t * 0.5) * 4;
-           const wave1Y = Math.cos(p.baseX * 0.005 + t * 0.5) * 4;
-           const wave2X = Math.sin(p.baseX * 0.03 + t * 2.0) * 1.5;
-           const wave2Y = Math.cos(p.baseY * 0.03 + t * 2.0) * 1.5;
-           noiseX = wave1X + wave2X;
-           noiseY = wave1Y + wave2Y;
+           const ph = p.phase;
+
+           // Wave 1: Large, slow swell — global breathing motion
+           // Per-particle phase breaks lockstep so rows don't move as one
+           const wave1X = Math.sin(p.baseY * 0.004 + t * 0.4 + ph) * 9.0;
+           const wave1Y = Math.cos(p.baseX * 0.004 + t * 0.35 + ph) * 9.0;
+
+           // Wave 2: Medium ripple at a crossed frequency
+           const wave2X = Math.sin(p.baseX * 0.012 + t * 1.2 + ph * 1.3) * 5.0;
+           const wave2Y = Math.cos(p.baseY * 0.012 + t * 1.1 + ph * 1.3) * 5.0;
+
+           // Wave 3: Fast diagonal shimmer — surface chatter
+           const wave3X = Math.sin(p.baseX * 0.035 + p.baseY * 0.02 + t * 3.5 + ph * 0.7) * 2.0;
+           const wave3Y = Math.cos(p.baseY * 0.035 + p.baseX * 0.02 + t * 3.2 + ph * 0.7) * 2.0;
+
+           // Wave 4: Very slow per-particle wander — each particle drifts on its own path
+           const wave4X = Math.sin(t * 0.15 + ph * 2.1) * 4.0;
+           const wave4Y = Math.cos(t * 0.18 + ph * 1.7) * 4.0;
+
+           noiseX = wave1X + wave2X + wave3X + wave4X;
+           noiseY = wave1Y + wave2Y + wave3Y + wave4Y;
         }
 
         const effectiveTargetX = targetX + noiseX;

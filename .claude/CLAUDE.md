@@ -35,3 +35,5 @@ Never hardcode values — always use `@theme` tokens from `globals.css`.
 1. Select frame → `mcp__figma-desktop__get_design_context` + `get_screenshot`
 2. If URL provided → use `mcp__claude_ai_Figma__get_design_context`
 3. Map all values to existing tokens. Add new tokens to `@theme` if needed.
+
+dev server running on port 3001
