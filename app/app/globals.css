@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@theme {
+  /* Custom slide theme tokens */
+  --color-slide-bg: #0f172a;
+  --color-slide-text: #f1f5f9;
+  --color-slide-accent: #3b82f6;
+  --color-slide-muted: #64748b;
+
+  /* Slide spacing */
+  --spacing-slide-padding: 4rem;
+
+  /* Typography scales for slides */
+  --font-size-slide-title: 4rem;
+  --font-size-slide-heading: 3rem;
+  --font-size-slide-subheading: 2rem;
+  --font-size-slide-body: 1.5rem;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Slide-specific styles */
+.slide {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-slide-padding);
+  background: var(--color-slide-bg);
+  color: var(--color-slide-text);
+}
+
+.slide h1 {
+  font-size: var(--font-size-slide-title);
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.slide h2 {
+  font-size: var(--font-size-slide-heading);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.slide h3 {
+  font-size: var(--font-size-slide-subheading);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.slide p {
+  font-size: var(--font-size-slide-body);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.slide ul, .slide ol {
+  font-size: var(--font-size-slide-body);
+  line-height: 1.8;
+  margin-left: 2rem;
+}
+
+.slide code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: 'Fira Code', monospace;
+}
+
+.slide pre {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.slide pre code {
+  background: none;
+  padding: 0;
+}
