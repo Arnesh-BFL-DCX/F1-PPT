@@ -82,6 +82,13 @@
   --color-chart-red:   #ed5e5e;
   --color-chart-steel: #4374b7;
 
+  /* Slide one metrics / company scores */
+  --color-score-bar-bg:     #363636;
+  --color-score-commitment: #e6993b;
+  --color-company-status:   #a9abb0;
+  --color-year-red:         #d63d36;
+  --color-year-green:       #72d460;
+
   /* Gradients */
   --gradient-metric-blue: linear-gradient(to bottom, #28b5e0, #0496ff);
   --gradient-progress:    linear-gradient(90deg, #174dd3 0%, #9026b4 35.1%, #e63364 62.5%, #ef9f3e 100%);

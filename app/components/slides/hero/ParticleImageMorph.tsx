@@ -269,11 +269,7 @@ export function ParticleImageMorph({
         let noiseX = 0;
         let noiseY = 0;
 
-        if (isCar && !isWaiting) {
-           // Car: Tiny vibration
-           noiseX = (Math.random() - 0.5) * 0.5;
-           noiseY = (Math.random() - 0.5) * 0.5;
-        } else {
+        if (!isCar) {
            // Blob: Organic idle — four independent wave layers
            const t = timeRef.current;
            const ph = p.phase;
@@ -351,8 +347,7 @@ export function ParticleImageMorph({
       style={{
         width: '100%',
         height: '100%',
-        objectFit: 'contain',
-        filter: 'drop-shadow(0 0 6px rgba(100, 200, 255, 0.5))'
+        objectFit: 'contain'
       }}
     />
   );
